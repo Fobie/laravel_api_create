@@ -11,7 +11,7 @@ class Product extends Model
         'title', 'price', 'description', 'category', 'image',
     ];
 
-    protected $hidden = ['rate', 'count']; 
+    protected $hidden = ['rate', 'count'];
     protected $appends = ['rating']; 
 
     public function getRatingAttribute()

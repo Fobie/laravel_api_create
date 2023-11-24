@@ -61,13 +61,13 @@ class ProductController extends Controller
     {
         $validator = Validator::make($request->all(),
         [
-            'title' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-            'category' => 'required',
-            'image' => 'required',
-            'rate' => 'required',
-            'count' => 'required',
+            'title',
+            'price',
+            'description',
+            'category',
+            'image',
+            'rate',
+            'count',
         ]);
 
         if($validator->fails()){
@@ -81,13 +81,27 @@ class ProductController extends Controller
         } else {
             $product = Product::find($id);
 
-            $product -> title = $request->title;
-            $product -> price = $request->price;
-            $product -> description = $request->description;
-            $product -> category = $request->category;
-            $product -> image = $request->image;
-            $product -> rate = $request->rate;
-            $product -> count = $request->count;
+            if ($request->has('title')) {
+                $product->title = $request->title;
+            }
+            if ($request->has('price')) {
+                $product->price = $request->price;
+            }
+            if ($request->has('description')) {
+                $product->description = $request->description;
+            }
+            if ($request->has('category')) {
+                $product->category = $request->category;
+            }
+            if ($request->has('image')) {
+                $product->image = $request->image;
+            }
+            if ($request->has('rate')) {
+                $product->rate = $request->rate;
+            }
+            if ($request->has('count')) {
+                $product->count = $request->count;
+            }
 
             $product->save();
             
